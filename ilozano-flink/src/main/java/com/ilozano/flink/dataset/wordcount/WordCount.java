@@ -22,13 +22,16 @@ public class WordCount {
         //read the text file
         DataSet<String> text = env.readTextFile(params.get("input"));
 
+        //filter all the names starting with N
         DataSet<String> filtered = text.filter(new FilterFunction<String>() {
             public boolean filter(String value) {
                 return value.startsWith("N");
             }
-        });
+        }); //filtered = dataset of [Noman Nipun Noman ...]
 
         //split the lines in pairs (2-tuples --> max is 25) containing: {word,integer)
+        //Tuple is a kind of data type. Have a fix length and cotains a set of fields
+        // tokenized = [(Noman,1) (Nipun,1) (Noman,1)]
         DataSet<Tuple2<String, Integer>> tokenized = filtered.map(new Tokenizer());
 
         //group by the touple field "0" and sum up tuple field "1"
@@ -42,6 +45,7 @@ public class WordCount {
         }
     }
 
+    //MapFunction will take single input on DataSet and return a single element
     public static final class Tokenizer implements MapFunction<String, Tuple2<String, Integer>> {
         public Tuple2<String, Integer> map(String value) {
             return new Tuple2(value, Integer.valueOf(1));
