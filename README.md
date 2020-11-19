@@ -1,5 +1,5 @@
 
-# Feed Property API
+# Flink Usages Examples
 
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisities)
@@ -39,13 +39,18 @@ Paso 3: Enviar un Job
 La release de Flink viene con un par de ejemplos de Jobs. Podemos enviar uno de estos a cluster que tenemos ejecutandose
 ```bash
 $ ./bin/flink run examples/streaming/WordCount.jar
-$ tail log/flink-*-taskexecutor-*.out
-  (to,1)
-  (be,1)
-  (or,1)
-  (not,1)
-  (to,2)
-  (be,2)
+$ tail log/flink-*-taskexecutor-*.out  
+  (nymph,1)
+  (in,3)
+  (thy,1)
+  (orisons,1)
+  (be,4)
+  (all,2)
+  (my,1)
+  (sins,1)
+  (remember,1)
+  (d,4)
+
 ```
 
 Paso 4: Parar el Cluster
